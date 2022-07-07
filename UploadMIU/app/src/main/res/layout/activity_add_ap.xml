@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AddAp">
+
+    <TextView
+        android:id="@+id/ap_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="以下ap将全部被提交:"
+        android:textColor="@color/black"
+        android:textSize="20dp"
+        android:textStyle="bold"></TextView>
+
+    <Spinner android:id="@+id/ap_spinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ap_name"
+        android:layout_marginTop="20dp"
+        />
+
+    <TextView
+        android:id="@+id/area_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:text="请选择area:"
+        android:textSize="20dp"
+        android:layout_below="@id/ap_spinner"
+        >
+    </TextView>
+
+    <Spinner android:id="@+id/area_spinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/area_name"
+        android:layout_marginTop="20dp"
+        />
+
+    <Button
+        android:id="@+id/submit_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="提交"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:layout_below="@id/area_spinner"
+        >
+
+    </Button>
+
+    <TextView
+        android:id="@+id/time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/submit_button"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:text="当前时间"
+        android:visibility="visible"></TextView>
+
+
+
+
+
+</RelativeLayout>
