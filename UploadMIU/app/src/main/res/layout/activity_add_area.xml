@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AddArea">
+
+    <TextView
+        android:id="@+id/text_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:text="区域名"
+        android:textSize="20dp"
+        android:paddingLeft="20dp"
+        >
+
+    </TextView>
+
+    <EditText
+        android:id="@+id/name_edit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/text_name"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="20dp"
+        android:textSize="20dp"
+        android:layout_marginRight="20dp"
+        >
+
+    </EditText>
+
+    <TextView
+        android:id="@+id/text_short"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:text="短描述"
+        android:textSize="20dp"
+        android:paddingLeft="20dp"
+        android:layout_below="@id/name_edit"
+        >
+
+    </TextView>
+
+    <EditText
+        android:id="@+id/short_edit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/text_short"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="20dp"
+        android:textSize="20dp"
+        android:layout_marginRight="20dp"
+        >
+
+    </EditText>
+
+    <TextView
+        android:id="@+id/text_long"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:text="长描述"
+        android:textSize="20dp"
+        android:paddingLeft="20dp"
+        android:layout_below="@id/short_edit"
+        >
+
+    </TextView>
+
+    <EditText
+        android:id="@+id/long_edit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/text_long"
+        android:gravity="top"
+        android:inputType="textMultiLine"
+        android:minLines="6"
+        android:maxLines="10"
+        android:scrollbars="vertical"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="20dp"
+        android:textSize="20dp"
+        android:layout_marginRight="20dp"
+        android:background="@android:drawable/edit_text"
+        >
+    </EditText>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="提交"
+        android:layout_below="@id/imageview"
+        android:id="@+id/submit"
+        >
+
+    </Button>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="take photo"
+        android:id="@+id/button"
+        android:layout_below="@id/long_edit"
+        />
+
+    <ImageView
+        android:id="@+id/imageview"
+        android:layout_width="105dp"
+        android:layout_height="111dp"
+        android:layout_below="@+id/button" />
+
+</RelativeLayout>
