@@ -23,8 +23,6 @@ import com.alibaba.fastjson.JSONObject;
 import com.bjtusse.uploadmiu.entity.Ap;
 import com.bjtusse.uploadmiu.entity.Area;
 
-import org.w3c.dom.Text;
-
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -74,7 +72,7 @@ public class AddWifiRecord extends AppCompatActivity {
     // 初始化Button
     private void initButton(){
         detectButton = (Button) findViewById(R.id.detect_button);
-        uploadButton = (Button) findViewById(R.id.submit_button);
+        uploadButton = (Button) findViewById(R.id.testlocation);
 
         // 检测的button
         detectButton.setOnClickListener(new View.OnClickListener() {
@@ -163,58 +161,64 @@ public class AddWifiRecord extends AppCompatActivity {
 
                     apList = JSONObject.parseArray(arrayStr, Ap.class);  //该area的所有ap
 
+
+                    // 获取检测到的所有ap（有ssid和bssid信息）
+                    for (ScanResult scanResult : scanResults) {
+                        Ap ap = new Ap();
+                        ap.setSsid(scanResult.SSID);
+                        ap.setBssid(scanResult.BSSID);
+                        apDetectList.add(ap);
+                        strengthDetectList.add(scanResult.level);
+                    }
+
+                    // 比对ap库，将检测到的ap赋值对应强度，未检测到的ap默认强度为MIN_STRENGTH
+                    boolean found;
+                    for(int i = 0; i < apList.size(); i++){
+                        found = false;
+                        for(int j = 0; j < apDetectList.size(); j++){
+
+                            if(apList.get(i).getSsid() == null || apDetectList.get(j).getSsid() == null) break;
+
+                            // 匹配上了
+                            if(Objects.equals(apList.get(i).getSsid(), apDetectList.get(j).getSsid())
+                                    && Objects.equals(apList.get(i).getBssid(), apDetectList.get(j).getBssid())){
+                                System.out.println("匹配上了："+i);
+
+                                apIdList.add(i);
+                                strengthList.add(strengthDetectList.get(j));
+                                found = true;
+                                break;
+                            }
+                        }
+                        // 没匹配上，赋值为MIN_STRENGTH
+                        if(!found){
+                            System.out.println("没匹配上："+i);
+                            apIdList.add(i);
+                            strengthList.add(MIN_STRENGTH);
+                        }
+                    }
+
+                    // TODO 修改为list比较好看
+                    // 将有效的ap展示在框中
+                    aps_show.setText("");
+                    for(int i = 0; i < apList.size(); i ++){
+                        aps_show.append("ap:" +apList.get(i).getSsid() + "   strength:" + strengthList.get(i) + "\n");
+                    }
+
+                    // 将apIdList和strengthList转化为string类型存储起来，格式为(1,2,3)
+                    apStr = toStr(apIdList);
+                    strengthStr = toStr(strengthList);
+
+
+
+
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
             }
         }).start();
 
-        // 获取检测到的所有ap（有ssid和bssid信息）
-        for (ScanResult scanResult : scanResults) {
-            Ap ap = new Ap();
-            ap.setSsid(scanResult.SSID);
-            ap.setBssid(scanResult.BSSID);
-            apDetectList.add(ap);
-            strengthDetectList.add(scanResult.level);
-        }
 
-        // 比对ap库，将检测到的ap赋值对应强度，未检测到的ap默认强度为MIN_STRENGTH
-        boolean found;
-        for(int i = 0; i < apList.size(); i++){
-            found = false;
-            for(int j = 0; j < apDetectList.size(); j++){
-
-                if(apList.get(i).getSsid() == null || apDetectList.get(j).getSsid() == null) break;
-
-                // 匹配上了
-                if(Objects.equals(apList.get(i).getSsid(), apDetectList.get(j).getSsid())
-                        && Objects.equals(apList.get(i).getBssid(), apDetectList.get(j).getBssid())){
-                    System.out.println("匹配上了："+i);
-
-                    apIdList.add(i);
-                    strengthList.add(strengthDetectList.get(j));
-                    found = true;
-                    break;
-                }
-            }
-            // 没匹配上，赋值为MIN_STRENGTH
-            if(!found){
-                System.out.println("没匹配上："+i);
-                apIdList.add(i);
-                strengthList.add(MIN_STRENGTH);
-            }
-        }
-
-        // TODO 修改为list比较好看
-        // 将有效的ap展示在框中
-        aps_show.setText("");
-        for(int i = 0; i < apList.size(); i ++){
-            aps_show.append("ap:" +apList.get(i).getSsid() + "   strength:" + strengthList.get(i) + "\n");
-        }
-
-        // 将apIdList和strengthList转化为string类型存储起来，格式为(1,2,3)
-        apStr = toStr(apIdList);
-        strengthStr = toStr(strengthList);
 
     }
 

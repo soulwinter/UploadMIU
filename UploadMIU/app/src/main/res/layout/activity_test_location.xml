@@ -19,88 +19,33 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/pointX_text"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="20dp"
-        android:text="请输入x坐标："
-        android:textColor="@color/black"
-
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintHorizontal_weight="0.3"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/area_id2" />
-
-    <EditText
-        android:id="@+id/pointX"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:inputType="number|numberDecimal"
-        app:layout_constraintLeft_toRightOf="@id/pointX_text"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/pointX_text" />
-
-
-    <TextView
-        android:id="@+id/pointY_text"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:text="请输入y坐标："
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        android:layout_marginStart="16dp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintHorizontal_weight="0.3"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/pointX" />
-
-    <EditText
-        android:id="@+id/pointY"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:inputType="number|numberDecimal"
-        app:layout_constraintLeft_toRightOf="@id/pointX_text"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/pointY_text" />
 
     <TextView
         android:id="@+id/aps_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
 
-        android:layout_marginTop="24dp"
+        android:layout_marginStart="16dp"
         android:text="当前检测到的ap："
         android:textColor="@color/black"
         android:textSize="20sp"
-        android:layout_marginStart="16dp"
 
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintHorizontal_weight="0.3"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/pointY" />
+        tools:layout_editor_absoluteY="129dp" />
 
     <TextView
         android:id="@+id/aps_show"
         android:layout_width="330dp"
-        android:layout_height="128dp"
-        android:layout_marginTop="20dp"
+        android:layout_height="301dp"
         android:layout_marginStart="16dp"
+        android:layout_marginTop="50dp"
         android:layout_marginEnd="16dp"
-        android:scrollbars="vertical"
         android:fadeScrollbars="false"
+        android:scrollbars="vertical"
         android:textColor="@color/black"
         android:textSize="16sp"
         android:verticalScrollbarPosition="right"
@@ -118,7 +63,7 @@
         android:layout_below="@id/aps_show"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="44dp"
-        android:text="一键上传"
+        android:text="测试定位"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.288"
         app:layout_constraintStart_toEndOf="@+id/detect_button"

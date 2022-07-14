@@ -29,6 +29,9 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".TestLocation"
+            android:exported="false" />
+        <activity
             android:name=".AddArea"
             android:exported="false" />
         <activity
